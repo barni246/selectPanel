@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.min.js">
+    <style>
+        .selectContainer {
+            margin-left: 50px;
+            margin-top: 50px;
+            width: 300px;
+            border: 2px solid rgba(0, 0, 0,0.5);
+            height: 25px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .selectContainerPlus {
+            overflow: visible;
+            height: unset;
+        }
+
+        .option {
+            width: 100%;
+            text-align: center;
+            height: 25px;
+            border-top: 1px rgba(0, 0, 0,0.2) solid;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 35px;
+            color: gray;
+            transition: all 75ms ease-in-out;
+        }
+
+        .option:hover {
+            background-color: rgba(0, 0, 0,0.1);
+            transition: all 75ms ease-in-out;
+        }
+
+        .optionPlus {
+            border-top: unset;
+            position: relative;
+            display: block;
+            padding-left: 0;
+            color: black;
+        }
+
+        .optionPlus:hover {
+            background-color: unset;
+        }
+
+        .button {
+            border: unset;
+            background-color: transparent;
+            cursor: pointer;
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            font-weight: bold;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let down = false;
+        function dropDown() {
+            if (!down) {
+                document.getElementById('selectContainer').classList.add('selectContainerPlus');
+                document.getElementById('button').innerHTML = 'close';
+                 down = true;
+
+            } else {
+                document.getElementById('selectContainer').classList.remove('selectContainerPlus');
+                document.getElementById('button').innerHTML = 'open';
+
+                down =false;
+            }
+           
+        }
+
+        function checkBox(x) {
+             let checked = document.getElementById('flexCheck_'+x).checked;
+            if(checked) {
+             document.getElementById('op'+x).style = "color: black";
+            } else {
+                document.getElementById('op'+x).style = "";
+            }
+          
+        }
+    </script>
+
+    <div id="selectContainer" class="selectContainer">
+        <div class="option optionPlus">contacts <button id="button" onclick="dropDown()" class="button">open</button></div>
+        <div id="op1" class="option">
+            contact_1
+            <div class="form-check">
+                <input class="form-check-input" onclick="checkBox(1)" type="checkbox" value="" id="flexCheck_1">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                </label>
+            </div>  
+            </div>
+        <div id="op2" class="option">
+            contact_2
+            <div class="form-check">
+                <input class="form-check-input" onclick="checkBox(2)" type="checkbox" value="" id="flexCheck_2">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                </label>
+            </div>  
+        </div>
+        <div id="op3" class="option">
+            contact_3
+            <div class="form-check">
+                <input class="form-check-input" onclick="checkBox(3)" type="checkbox" value="" id="flexCheck_3">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                </label>
+            </div>  
+        </div>
+        <div id="op4" class="option">
+            contact_4
+            <div class="form-check">
+                <input class="form-check-input" onclick="checkBox(4)" type="checkbox" value="" id="flexCheck_4">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                </label>
+            </div>  
+        </div>
+        <div id="op5" class="option">
+            contact_5
+            <div class="form-check">
+                <input class="form-check-input" onclick="checkBox(5)" type="checkbox" value="" id="flexCheck_5">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                </label>
+            </div>  
+        </div>
+    </div>
+</body>
+
+</html>
